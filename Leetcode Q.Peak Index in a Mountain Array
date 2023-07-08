@@ -1,4 +1,4 @@
-//Binary search Medium Q by Kunal Kushwaha
+//Binary search Q by Kunal Kushwaha
 //leetcode link- https://leetcode.com/problems/peak-index-in-a-mountain-array/description/
 class Solution {
     public int peakIndexInMountainArray(int[] arr) {
