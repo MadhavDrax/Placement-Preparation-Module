@@ -1,0 +1,50 @@
+import java.util.* ;
+import java.io.*; 
+/************************************************************
+	
+	Following is the InfinteSizeArray class structure:
+	class InfinteSizeArray {
+		private int[] arr;
+		private int size;
+
+		InfinteSizeArray(int[] arr) {
+			size = arr.length;
+			this.arr = arr;
+		}
+
+		public int readValueAtIndex(int index) {
+			if (index >= size) {
+				return (int) Math.pow(10, 9) + 7;
+			} else {
+				return arr[index];
+			}
+		}
+	}
+ 
+ ************************************************************/
+
+public class Solution {
+	public static int ninjaAndInfiniteSizeArray(InfinteSizeArray obj, int target) {
+		int ei = 1;
+	while (obj.readValueAtIndex(ei) < target) {
+		ei = ei * 2;
+	}
+	int si = ei / 2;
+
+	while (si <= ei) {
+		int mid = (si + ei) / 2;
+		if (obj.readValueAtIndex(mid) == target) {
+			return mid;
+		} 
+		else if (obj.readValueAtIndex(mid) > target) {
+			ei = mid - 1;
+		} 
+
+		else {
+			si = mid + 1;
+		}
+
+	}
+	return -1;
+	} 
+}
