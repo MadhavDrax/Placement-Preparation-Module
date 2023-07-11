@@ -1,0 +1,27 @@
+class Solution {
+    public int search(int[] nums, int target) {
+        int ans = bsearch(nums, target, 0, nums.length-1);
+        return ans;
+    }
+    int bsearch(int[] nums, int t, int s, int e){
+        if(s>e) return -1;
+        
+        int mid = s + (e-s)/2;
+        if(nums[mid]==t) return mid;
+        // check if we are in left sorted array
+        if(nums[mid]>=nums[s]){
+            // check target is in left sorted array
+            if(t>=nums[s] && t<=nums[mid]){
+                return bsearch(nums, t, s, mid-1);
+            }
+            return bsearch(nums, t, mid+1, e);
+        }
+        else{
+            if(t>=nums[mid] && t<=nums[e]){
+                return bsearch(nums, t, mid+1, e);
+            }
+            return bsearch(nums, t, s, mid-1);
+        }
+
+    }
+}
